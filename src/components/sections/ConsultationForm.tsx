@@ -1,0 +1,133 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card } from "@/components/ui/card";
+import Icon from "@/components/ui/icon";
+
+interface ConsultationFormProps {
+  formData: {
+    name: string;
+    contact: string;
+    niche: string;
+    goal: string;
+  };
+  handleSubmit: (e: React.FormEvent) => void;
+  setFormData: React.Dispatch<React.SetStateAction<{
+    name: string;
+    contact: string;
+    niche: string;
+    goal: string;
+  }>>;
+}
+
+export const ConsultationForm = ({ formData, handleSubmit, setFormData }: ConsultationFormProps) => {
+  return (
+    <section id="consultation" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-2xl mx-auto">
+          <div className="text-center mb-12 animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur mb-6">
+              <Icon name="MessageSquare" size={16} className="text-primary" />
+              <span className="text-xs font-bold tracking-wider uppercase text-primary">Начните прямо сейчас</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black mb-4">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Получить бесплатную консультацию
+              </span>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              30–40 минут созвона, чтобы разобрать вашу ситуацию и предложить конкретные решения
+            </p>
+          </div>
+
+          <Card className="p-8 bg-card/50 backdrop-blur border-border/50 shadow-2xl shadow-primary/10">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Ваше имя</label>
+                <Input 
+                  placeholder="Как к вам обращаться?"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  required
+                  className="bg-background/50 border-border/50"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Telegram или телефон</label>
+                <Input 
+                  placeholder="@username или +7 (___) ___-__-__"
+                  value={formData.contact}
+                  onChange={(e) => setFormData({...formData, contact: e.target.value})}
+                  required
+                  className="bg-background/50 border-border/50"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Ваша ниша или продукт</label>
+                <Input 
+                  placeholder="Например: онлайн-школа, консалтинг, e-commerce"
+                  value={formData.niche}
+                  onChange={(e) => setFormData({...formData, niche: e.target.value})}
+                  required
+                  className="bg-background/50 border-border/50"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Какую задачу хотите решить?</label>
+                <Textarea 
+                  placeholder="Опишите вашу цель: запустить воронку, увеличить конверсию, автоматизировать процесс..."
+                  value={formData.goal}
+                  onChange={(e) => setFormData({...formData, goal: e.target.value})}
+                  required
+                  className="bg-background/50 border-border/50 min-h-[120px]"
+                />
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg font-semibold py-6"
+              >
+                Отправить заявку
+              </Button>
+
+              <p className="text-xs text-center text-muted-foreground">
+                Нажимая кнопку, вы соглашаетесь на обработку персональных данных
+              </p>
+            </form>
+          </Card>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground mb-4">Или свяжитесь со мной напрямую:</p>
+            <div className="flex justify-center gap-4">
+              <Button 
+                variant="outline" 
+                className="border-2"
+                asChild
+              >
+                <a href="https://t.me/andreasdilman" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Icon name="Send" size={18} />
+                  Telegram
+                </a>
+              </Button>
+              <Button 
+                variant="outline" 
+                className="border-2"
+                asChild
+              >
+                <a href="mailto:contact@example.com" className="flex items-center gap-2">
+                  <Icon name="Mail" size={18} />
+                  Email
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
