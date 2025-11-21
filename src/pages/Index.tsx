@@ -34,8 +34,12 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-primary via-accent to-primary animate-gradient flex items-center justify-center shadow-lg shadow-primary/30 animate-glow">
-                <span className="text-xl font-black text-primary-foreground">A</span>
+              <div className="w-10 h-10 rounded-2xl overflow-hidden shadow-lg shadow-primary/30 ring-2 ring-primary/30">
+                <img 
+                  src="https://cdn.poehali.dev/files/4282259e-6f12-4a46-9573-6f5a0b5d5880.jpg" 
+                  alt="Andrej Dilman"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <div className="font-bold text-sm tracking-tight">Andrej Dilman</div>
