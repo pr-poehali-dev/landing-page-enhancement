@@ -167,6 +167,200 @@ const Index = () => {
           </div>
         </section>
 
+        <section className="py-20 bg-gradient-to-b from-secondary/50 to-transparent relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(168,85,247,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,rgba(236,72,153,0.15),transparent_50%)]" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-16 animate-fade-in">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 backdrop-blur mb-6">
+                  <Icon name="Sparkles" size={16} className="text-purple-400" />
+                  <span className="text-xs font-bold tracking-wider uppercase text-purple-300">Полный цикл digital-упаковки</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6">
+                  <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                    От идеи до потока клиентов
+                  </span>
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Создаю полноценные системы привлечения: от премиальных сайтов до умных автоворонок, которые работают 24/7
+                </p>
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="order-2 lg:order-1">
+                  <Card className="p-8 bg-gradient-to-br from-card/80 to-card/40 backdrop-blur-xl border-border/50 shadow-2xl shadow-purple-500/10">
+                    <div className="space-y-6">
+                      <div>
+                        <h3 className="text-2xl font-black mb-4 flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                            <Icon name="Zap" size={20} className="text-purple-400" />
+                          </div>
+                          Полный спектр решений
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed mb-6">
+                          Работаю на всех этапах воронки продаж — от первого касания до закрытия сделки
+                        </p>
+                      </div>
+
+                      <div className="grid gap-4">
+                        {[
+                          {
+                            icon: "Globe",
+                            title: "Сайты и лендинги",
+                            desc: "Премиальные посадочные страницы с фокусом на конверсию: каждый элемент работает на результат",
+                            badge: "До 300% рост конверсии"
+                          },
+                          {
+                            icon: "Bot",
+                            title: "Чат-боты и автоматизация",
+                            desc: "Умные боты для Telegram: квалификация лидов, ответы на вопросы, запись на встречи без участия человека",
+                            badge: "Экономия 15+ часов/нед"
+                          },
+                          {
+                            icon: "Workflow",
+                            title: "Автоворонки продаж",
+                            desc: "Многошаговые цепочки с триггерами и сегментацией: каждый клиент получает персональное сообщение в нужный момент",
+                            badge: "Допродажи на автомате"
+                          },
+                          {
+                            icon: "Target",
+                            title: "Трафик и масштабирование",
+                            desc: "Настройка контекста, таргета, тизеров: только белые каналы с прозрачной аналитикой и предсказуемым результатом",
+                            badge: "От 50 заявок/месяц"
+                          },
+                        ].map((item, i) => (
+                          <div 
+                            key={i} 
+                            className="p-4 rounded-xl bg-gradient-to-br from-secondary/80 to-secondary/40 border border-border/50 hover:border-purple-500/50 transition-all duration-300 group hover:scale-[1.02]"
+                          >
+                            <div className="flex gap-4 items-start">
+                              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                                <Icon name={item.icon as any} size={22} className="text-purple-400" />
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-start justify-between gap-2 mb-2">
+                                  <h4 className="font-bold text-sm">{item.title}</h4>
+                                  <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 text-[10px] font-bold text-green-400 whitespace-nowrap">
+                                    {item.badge}
+                                  </span>
+                                </div>
+                                <p className="text-xs text-muted-foreground leading-relaxed">{item.desc}</p>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+
+                <div className="order-1 lg:order-2 relative">
+                  <div className="relative">
+                    <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/30 via-pink-500/30 to-purple-500/30 rounded-3xl blur-2xl opacity-50 animate-pulse" />
+                    
+                    <Card className="relative p-1 bg-gradient-to-br from-purple-500/50 via-pink-500/50 to-purple-500/50 backdrop-blur shadow-2xl">
+                      <div className="bg-card rounded-2xl overflow-hidden">
+                        <img 
+                          src="https://cdn.poehali.dev/files/4282259e-6f12-4a46-9573-6f5a0b5d5880.jpg"
+                          alt="Andrej Dilman — Digital-маркетолог"
+                          className="w-full h-auto"
+                        />
+                        
+                        <div className="p-6 bg-gradient-to-br from-card to-secondary/50">
+                          <div className="space-y-4">
+                            <div>
+                              <h3 className="text-2xl font-black mb-1">Andrej Dilman</h3>
+                              <p className="text-sm text-muted-foreground">Digital-маркетолог, разработчик систем продаж</p>
+                            </div>
+                            
+                            <div className="flex flex-wrap gap-2">
+                              {[
+                                { icon: "Award", text: "5+ лет в digital" },
+                                { icon: "Users", text: "200+ проектов" },
+                                { icon: "TrendingUp", text: "x2-x5 рост конверсий" },
+                              ].map((stat, i) => (
+                                <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/80 border border-border/50">
+                                  <Icon name={stat.icon as any} size={14} className="text-purple-400" />
+                                  <span className="text-xs font-medium">{stat.text}</span>
+                                </div>
+                              ))}
+                            </div>
+
+                            <div className="pt-4 border-t border-border/50">
+                              <p className="text-sm leading-relaxed text-muted-foreground mb-4">
+                                Специализируюсь на создании digital-экосистем, где каждый элемент дополняет друг друга: 
+                                <span className="text-foreground font-medium"> сайт привлекает, бот квалифицирует, воронка продаёт</span>
+                              </p>
+                              
+                              <div className="flex gap-3">
+                                <Button 
+                                  onClick={scrollToConsultation}
+                                  className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition-all shadow-lg shadow-purple-500/30"
+                                >
+                                  <Icon name="Calendar" size={16} />
+                                  Записаться
+                                </Button>
+                                <Button 
+                                  variant="outline" 
+                                  className="border-2"
+                                  asChild
+                                >
+                                  <a href="https://t.me/andreasdilman" target="_blank" rel="noopener noreferrer">
+                                    <Icon name="Send" size={16} />
+                                  </a>
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+
+                    <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-full blur-3xl" />
+                    <div className="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-full blur-3xl" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-16 grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: "Rocket",
+                    title: "Быстрый запуск",
+                    desc: "От брифа до запуска первой воронки — 7-14 дней. Никаких месяцев ожидания",
+                    color: "from-blue-500/20 to-cyan-500/20 border-blue-500/30"
+                  },
+                  {
+                    icon: "ShieldCheck",
+                    title: "Только легальные методы",
+                    desc: "Работаю исключительно с белыми нишами и соблюдаю все требования площадок",
+                    color: "from-green-500/20 to-emerald-500/20 border-green-500/30"
+                  },
+                  {
+                    icon: "BarChart3",
+                    title: "Прозрачная аналитика",
+                    desc: "Видите каждый шаг клиента, источник трафика и ROI в реальном времени",
+                    color: "from-purple-500/20 to-pink-500/20 border-purple-500/30"
+                  },
+                ].map((feature, i) => (
+                  <Card 
+                    key={i} 
+                    className={`p-6 bg-gradient-to-br ${feature.color} backdrop-blur border hover:scale-105 transition-all duration-300 text-center`}
+                  >
+                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-background/50 to-background/30 flex items-center justify-center mx-auto mb-4 shadow-lg">
+                      <Icon name={feature.icon as any} size={28} className="text-foreground" />
+                    </div>
+                    <h4 className="font-bold mb-2">{feature.title}</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{feature.desc}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="services" className="py-20 bg-gradient-to-b from-transparent to-secondary/30">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mb-16 animate-fade-in">
