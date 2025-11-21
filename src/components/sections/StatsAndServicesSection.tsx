@@ -1,7 +1,17 @@
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export const StatsAndServicesSection = () => {
+  const statsRef = useRef(null);
+  const servicesRef = useRef(null);
+  const processRef = useRef(null);
+  const isStatsInView = useInView(statsRef, { once: true, margin: "-100px" });
+  const isServicesInView = useInView(servicesRef, { once: true, margin: "-100px" });
+  const isProcessInView = useInView(processRef, { once: true, margin: "-100px" });
+
   return (
     <>
       <section className="py-20 bg-gradient-to-b from-secondary/50 to-transparent relative overflow-hidden">
@@ -10,7 +20,13 @@ export const StatsAndServicesSection = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
+            <motion.div 
+              ref={statsRef}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isStatsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur mb-6">
                 <Icon name="Trophy" size={16} className="text-primary" />
                 <span className="text-xs font-bold tracking-wider uppercase text-primary">результаты и цифры</span>
@@ -23,7 +39,7 @@ export const StatsAndServicesSection = () => {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Простые цифры, которые показывают, зачем нужна автоматизация — без красивых обещаний
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {[
@@ -46,20 +62,23 @@ export const StatsAndServicesSection = () => {
                   description: "За счёт автоответов в боте и квалификации заявок"
                 },
               ].map((stat, i) => (
-                <Card 
+                <motion.div
                   key={i}
-                  className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-primary/50 transition-all duration-300 group animate-scale-in"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={isStatsInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-primary/20">
-                    <Icon name={stat.icon as any} size={24} className="text-primary" />
-                  </div>
-                  <div className="text-3xl font-black mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    {stat.value}
-                  </div>
-                  <div className="font-bold mb-2 text-foreground">{stat.label}</div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{stat.description}</p>
-                </Card>
+                  <Card className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-primary/50 transition-all duration-300 group h-full">
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-primary/20">
+                      <Icon name={stat.icon as any} size={24} className="text-primary" />
+                    </div>
+                    <div className="text-3xl font-black mb-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                      {stat.value}
+                    </div>
+                    <div className="font-bold mb-2 text-foreground">{stat.label}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{stat.description}</p>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -71,7 +90,13 @@ export const StatsAndServicesSection = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
+            <motion.div 
+              ref={servicesRef}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isServicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur mb-6">
                 <Icon name="Briefcase" size={16} className="text-accent" />
                 <span className="text-xs font-bold tracking-wider uppercase text-accent">услуги</span>
@@ -84,7 +109,7 @@ export const StatsAndServicesSection = () => {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Каждый проект — это законченная digital-воронка: от дизайна лендинга до автоворонки и трафика
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {[
@@ -117,27 +142,30 @@ export const StatsAndServicesSection = () => {
                   features: ["Разбор текущей воронки", "Рекомендации по офферу", "Чек-листы для масштабирования"]
                 },
               ].map((service, i) => (
-                <Card 
+                <motion.div
                   key={i}
-                  className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-primary/50 transition-all duration-300 group animate-scale-in"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isServicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
                 >
-                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} opacity-20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xl`}>
-                    <div className="absolute w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-transparent backdrop-blur flex items-center justify-center">
-                      <Icon name={service.icon as any} size={28} className="text-foreground" />
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-black mb-3 text-foreground">{service.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
-                  <div className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <Icon name="CheckCircle2" size={16} className="text-green-400 flex-shrink-0 mt-0.5" />
-                        <span className="text-xs text-muted-foreground">{feature}</span>
+                  <Card className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-primary/50 transition-all duration-300 group h-full">
+                    <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} opacity-20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-xl`}>
+                      <div className="absolute w-14 h-14 rounded-2xl bg-gradient-to-br from-white/20 to-transparent backdrop-blur flex items-center justify-center">
+                        <Icon name={service.icon as any} size={28} className="text-foreground" />
                       </div>
-                    ))}
-                  </div>
-                </Card>
+                    </div>
+                    <h3 className="text-xl font-black mb-3 text-foreground">{service.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
+                    <div className="space-y-2">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <Icon name="CheckCircle2" size={16} className="text-green-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-xs text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -149,7 +177,13 @@ export const StatsAndServicesSection = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-16 animate-fade-in">
+            <motion.div 
+              ref={processRef}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isProcessInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 backdrop-blur mb-6">
                 <Icon name="GitBranch" size={16} className="text-purple-400" />
                 <span className="text-xs font-bold tracking-wider uppercase text-purple-300">процесс работы</span>
@@ -162,7 +196,7 @@ export const StatsAndServicesSection = () => {
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 5 простых шагов от заявки до запуска вашей автоворонки — прозрачно и без сюрпризов
               </p>
-            </div>
+            </motion.div>
 
             <div className="space-y-4">
               {[
@@ -172,24 +206,27 @@ export const StatsAndServicesSection = () => {
                 { step: "04", title: "Настройка трафика", description: "Запускаю рекламу: контекст, таргет или тизеры. Отслеживаем первые заявки, корректируем креативы и ставки.", icon: "TrendingUp" },
                 { step: "05", title: "Передача и поддержка", description: "Передаю доступы, обучаю команду работе с системой. Первые 14 дней — бесплатная поддержка, далее — по желанию.", icon: "CheckCircle2" },
               ].map((item, i) => (
-                <Card 
+                <motion.div
                   key={i}
-                  className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-purple-500/50 transition-all duration-300 group animate-slide-in"
-                  style={{ animationDelay: `${i * 0.1}s` }}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isProcessInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                 >
-                  <div className="flex gap-4 items-start">
-                    <div className="flex-shrink-0">
-                      <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
-                        <Icon name={item.icon as any} size={20} className="text-purple-400" />
+                  <Card className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-purple-500/50 transition-all duration-300 group">
+                    <div className="flex gap-4 items-start">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg shadow-purple-500/20">
+                          <Icon name={item.icon as any} size={20} className="text-purple-400" />
+                        </div>
+                        <div className="text-xs font-black text-purple-400/50 text-center">{item.step}</div>
                       </div>
-                      <div className="text-xs font-black text-purple-400/50 text-center">{item.step}</div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-2 text-foreground">{item.title}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold mb-2 text-foreground">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                </Card>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>

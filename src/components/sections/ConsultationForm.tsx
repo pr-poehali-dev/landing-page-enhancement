@@ -3,6 +3,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 interface ConsultationFormProps {
   formData: {
@@ -21,13 +24,22 @@ interface ConsultationFormProps {
 }
 
 export const ConsultationForm = ({ formData, handleSubmit, setFormData }: ConsultationFormProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section id="consultation" className="py-20 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-accent/10 to-transparent blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
+          <motion.div 
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 backdrop-blur mb-6">
               <Icon name="MessageSquare" size={16} className="text-primary" />
               <span className="text-xs font-bold tracking-wider uppercase text-primary">Начните прямо сейчас</span>
@@ -40,9 +52,14 @@ export const ConsultationForm = ({ formData, handleSubmit, setFormData }: Consul
             <p className="text-lg text-muted-foreground">
               30–40 минут созвона, чтобы разобрать вашу ситуацию и предложить конкретные решения
             </p>
-          </div>
+          </motion.div>
 
-          <Card className="p-8 bg-card/50 backdrop-blur border-border/50 shadow-2xl shadow-primary/10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Card className="p-8 bg-card/50 backdrop-blur border-border/50 shadow-2xl shadow-primary/10">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium">Ваше имя</label>
@@ -100,6 +117,7 @@ export const ConsultationForm = ({ formData, handleSubmit, setFormData }: Consul
               </p>
             </form>
           </Card>
+          </motion.div>
 
           <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground mb-4">Или свяжитесь со мной напрямую:</p>

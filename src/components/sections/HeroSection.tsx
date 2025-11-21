@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   scrollToConsultation: () => void;
@@ -13,7 +14,12 @@ export const HeroSection = ({ scrollToConsultation }: HeroSectionProps) => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-fade-in space-y-8">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-8"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/80 border border-primary/30 backdrop-blur">
               <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               <span className="text-xs font-medium tracking-wider uppercase">автоматизация бизнес процессов
@@ -66,9 +72,14 @@ export const HeroSection = ({ scrollToConsultation }: HeroSectionProps) => {
             <p className="text-sm text-muted-foreground">
               30–40 минут созвона, чтобы разложить воронку по шагам без лишней теории
             </p>
-          </div>
+          </motion.div>
 
-          <Card className="p-6 bg-card/50 backdrop-blur border-border/50 animate-scale-in shadow-2xl shadow-primary/10">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <Card className="p-6 bg-card/50 backdrop-blur border-border/50 shadow-2xl shadow-primary/10">
             <div className="flex justify-between items-start mb-6">
               <div>
                 <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">Модель работы</div>
@@ -110,6 +121,7 @@ export const HeroSection = ({ scrollToConsultation }: HeroSectionProps) => {
               </p>
             </div>
           </Card>
+          </motion.div>
         </div>
       </div>
     </section>
