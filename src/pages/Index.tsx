@@ -654,7 +654,8 @@ const Index = () => {
       <footer className="py-8 border-t border-border/50 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <div>© {new Date().getFullYear()} Andreas Dilman. Digital-автоворонки, чат-боты и консультации</div>
+            <div>© 2025-2026 Andrej Dilman. Digital-автоворонки, чат-боты и консультации
+</div>
             <div className="flex gap-6">
               <a href="https://t.me/andreasdilman" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 Telegram
