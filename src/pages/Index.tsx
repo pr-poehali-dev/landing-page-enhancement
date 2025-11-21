@@ -158,7 +158,7 @@ const Index = () => {
                 </div>
 
                 <div className="mt-6 p-3 rounded-lg bg-gradient-to-r from-primary/10 to-accent/10 border border-primary/20">
-                  <p className="text-xs text-center font-medium">
+                  <p className="text-center text-xs font-semibold">
                     Без инвестиций, крипты и финансовых услуг
                   </p>
                 </div>
