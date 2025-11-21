@@ -5,6 +5,7 @@ import Icon from '@/components/ui/icon';
 import { analytics } from '@/utils/analytics';
 
 export const AnalyticsDashboard = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [stats, setStats] = useState({
     totalEvents: 0,
@@ -23,12 +24,71 @@ export const AnalyticsDashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    let sequence = '';
+    const SECRET_CODE = 'admin';
+    
+    const handleKeyPress = (e: KeyboardEvent) => {
+      sequence += e.key.toLowerCase();
+      
+      if (sequence.length > SECRET_CODE.length) {
+        sequence = sequence.slice(-SECRET_CODE.length);
+      }
+      
+      if (sequence === SECRET_CODE) {
+        setIsVisible(true);
+        sequence = '';
+      }
+    };
+
+    window.addEventListener('keypress', handleKeyPress);
+    return () => window.removeEventListener('keypress', handleKeyPress);
+  }, []);
+
+  const exportToCSV = () => {
+    const events = analytics.getEvents();
+    if (events.length === 0) {
+      alert('Нет данных для экспорта');
+      return;
+    }
+
+    const headers = ['Событие', 'Категория', 'Действие', 'Метка', 'Значение', 'Время'];
+    const rows = events.map(e => [
+      e.event,
+      e.category,
+      e.action,
+      e.label || '',
+      e.value || '',
+      new Date(e.timestamp).toLocaleString('ru-RU')
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+    ].join('\n');
+
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `analytics_${Date.now()}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  if (!isVisible) {
+    return null;
+  }
+
   if (!isOpen) {
     return (
       <Button
         onClick={() => setIsOpen(true)}
         className="fixed bottom-4 right-4 z-50 rounded-full w-14 h-14 bg-gradient-to-r from-primary to-accent shadow-lg hover:shadow-xl transition-all"
-        title="Открыть аналитику"
+        title="Открыть аналитику (только для администратора)"
       >
         <Icon name="BarChart3" size={24} />
       </Button>
@@ -95,7 +155,17 @@ export const AnalyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="mt-4 pt-4 border-t border-border/50">
+        <div className="mt-4 pt-4 border-t border-border/50 space-y-2">
+          <Button
+            variant="default"
+            size="sm"
+            onClick={exportToCSV}
+            className="w-full text-xs bg-gradient-to-r from-primary to-accent"
+          >
+            <Icon name="Download" size={14} className="mr-2" />
+            Экспортировать в CSV
+          </Button>
+
           <Button
             variant="outline"
             size="sm"
@@ -119,6 +189,10 @@ export const AnalyticsDashboard = () => {
 
         <p className="text-xs text-muted-foreground mt-3 text-center">
           Сессия: {analytics.getSessionId().slice(-8)}
+        </p>
+        
+        <p className="text-xs text-muted-foreground mt-2 text-center">
+          Всего событий: {stats.totalEvents}
         </p>
       </Card>
     </div>
