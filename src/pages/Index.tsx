@@ -453,40 +453,111 @@ const Index = () => {
           </div>
         </section>
 
-        <section id="legal" className="py-20 bg-gradient-to-b from-transparent to-secondary/30">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mb-12">
-              <div className="text-xs uppercase tracking-wider text-primary mb-3 font-semibold">Юридическая прозрачность</div>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Только digital-маркетинг</h2>
-              <p className="text-lg text-muted-foreground">
-                Вся деятельность связана с разработкой, консалтингом и настройкой digital-систем. Ничего сверх этого
-              </p>
-            </div>
-
-            <Card className="p-8 bg-gradient-to-br from-emerald-500/10 to-green-500/10 border-2 border-emerald-500/30 backdrop-blur">
-              <h3 className="text-sm uppercase tracking-wider font-bold mb-4 text-emerald-400">Что важно знать</h3>
-              <div className="space-y-3 text-sm leading-relaxed">
-                <p className="flex items-start gap-2">
-                  <Icon name="CircleCheck" size={18} className="text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Не осуществляю финансовую, инвестиционную или брокерскую деятельность</span>
-                </p>
-                <p className="flex items-start gap-2">
-                  <Icon name="CircleCheck" size={18} className="text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Не привлекаю средства клиентов под проценты и не управляю их капиталом</span>
-                </p>
-                <p className="flex items-start gap-2">
-                  <Icon name="CircleCheck" size={18} className="text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Не занимаюсь криптовалютами, токенами, трейдингом и инвестиционными продуктами</span>
-                </p>
-                <p className="flex items-start gap-2">
-                  <Icon name="CircleCheck" size={18} className="text-emerald-400 flex-shrink-0 mt-0.5" />
-                  <span>Все услуги относятся к области разработки, маркетинга и консалтинга для бизнеса</span>
+        <section id="legal" className="py-20 bg-gradient-to-b from-transparent to-secondary/30 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,197,94,0.1),transparent_70%)]" />
+          
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 backdrop-blur mb-6">
+                  <Icon name="ShieldCheck" size={16} className="text-green-400" />
+                  <span className="text-xs font-bold tracking-wider uppercase text-green-300">Честные ответы на важные вопросы</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-black mb-4">
+                  <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+                    Полная прозрачность
+                  </span>
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Чтобы вы понимали, с кем работаете и чего ожидать — без скрытых условий и сюрпризов
                 </p>
               </div>
-              <p className="text-sm text-muted-foreground mt-6 pt-6 border-t border-emerald-500/20">
-                Это позволяет безопасно интегрировать платёжные решения и соответствовать требованиям платёжных провайдеров и рекламных площадок
-              </p>
-            </Card>
+
+              <div className="space-y-4">
+                {[
+                  {
+                    q: "Что именно вы делаете?",
+                    a: "Разрабатываю digital-решения для бизнеса: сайты, лендинги, чат-боты, автоворонки и настраиваю рекламные кампании. Это услуги маркетинга, разработки и консалтинга — ничего больше."
+                  },
+                  {
+                    q: "Как происходит оплата?",
+                    a: "Работаю официально через договор. Оплата за услуги разработки и консультаций — никаких инвестиций, процентов или схем \"заработка\". Вы платите за работу, получаете результат."
+                  },
+                  {
+                    q: "Есть ли гарантии результата?",
+                    a: "Гарантирую качественную реализацию: рабочий сайт, настроенный бот, запущенную рекламу. Конверсия зависит от вашего оффера, ниши и аудитории — я помогаю максимизировать результат, но не обещаю волшебных цифр."
+                  },
+                  {
+                    q: "С какими нишами вы работаете?",
+                    a: "Только с легальными: онлайн-школы, эксперты, услуги для бизнеса, e-commerce, консалтинг. Не работаю с финансами, инвестициями, криптовалютами, БАДами и схемами быстрого заработка."
+                  },
+                  {
+                    q: "Сколько стоят ваши услуги?",
+                    a: "Зависит от проекта. Простой лендинг — от 30 000₽, чат-бот с автоворонкой — от 50 000₽, комплексная система (сайт + бот + трафик) — от 150 000₽. Точную цену обсуждаем на консультации после разбора задачи."
+                  },
+                  {
+                    q: "Как долго реализуется проект?",
+                    a: "Лендинг — 3-7 дней, чат-бот — 5-10 дней, полная воронка с трафиком — 2-4 недели. Сроки зависят от сложности, но я всегда фиксирую дедлайны в договоре."
+                  },
+                  {
+                    q: "Можно ли начать с пробной консультации?",
+                    a: "Да! Первая консультация 30-40 минут — бесплатно. Разбираем вашу ситуацию, даю рекомендации. Если решите работать дальше — обсудим конкретный план и стоимость."
+                  },
+                  {
+                    q: "Что будет после запуска?",
+                    a: "Передаю вам все доступы, инструкции и обучаю команду работе с системой. Поддержка первые 14 дней бесплатно, дальше — по желанию на абонентской основе или разовые правки."
+                  },
+                ].map((faq, i) => (
+                  <Card 
+                    key={i}
+                    className="p-6 bg-card/50 backdrop-blur border-border/50 hover:border-green-500/50 transition-all duration-300 group"
+                  >
+                    <div className="flex gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-green-500/20">
+                        <Icon name="HelpCircle" size={20} className="text-green-400" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold mb-3 text-foreground">{faq.q}</h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+
+              <Card className="mt-12 p-8 bg-gradient-to-br from-green-500/10 to-emerald-500/10 border-2 border-green-500/30 backdrop-blur">
+                <div className="flex gap-4 items-start">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/30 to-emerald-500/30 flex items-center justify-center flex-shrink-0">
+                    <Icon name="CheckCircle2" size={24} className="text-green-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-black mb-3 text-green-400">Почему это важно?</h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground mb-4">
+                      Прозрачность работы позволяет мне безопасно подключать платёжные системы (ЮKassa, Stripe), 
+                      проходить модерацию в Яндекс.Директ и VK Рекламе, а главное — выстраивать долгосрочные отношения с клиентами.
+                    </p>
+                    <p className="text-sm leading-relaxed text-foreground font-medium">
+                      Вы получаете надёжного партнёра, который работает официально и соблюдает все правила — 
+                      без рисков блокировки рекламных кабинетов и проблем с платежами.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
+              <div className="mt-12 text-center">
+                <p className="text-sm text-muted-foreground mb-6">
+                  Остались вопросы? Обсудим на бесплатной консультации
+                </p>
+                <Button 
+                  onClick={scrollToConsultation}
+                  size="lg"
+                  className="bg-gradient-to-r from-green-500 to-emerald-500 hover:opacity-90 transition-all shadow-lg shadow-green-500/30 text-base font-semibold px-8"
+                >
+                  <Icon name="MessageCircle" size={18} />
+                  Задать вопрос на консультации
+                </Button>
+              </div>
+            </div>
           </div>
         </section>
 
