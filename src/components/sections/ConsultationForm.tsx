@@ -74,7 +74,7 @@ export const ConsultationForm = ({ formData, handleSubmit, setFormData }: Consul
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Telegram или телефон</label>
+                <label className="text-sm font-medium">Telegram или What's app</label>
                 <Input 
                   placeholder="@username или +7 (___) ___-__-__"
                   value={formData.contact}
